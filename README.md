@@ -35,7 +35,7 @@ const MyComponent = props => (
 
 ## Ideas for layout + widget configuration
 
-There are a couple competing layout strategies I have in mind. In all case "widgets" are really just React compoents.
+There are a couple competing layout strategies I have in mind. In all case "widgets" are really just React components.
 
 ### Pass in simple layout and widgets
 
