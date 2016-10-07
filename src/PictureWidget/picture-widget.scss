@@ -1,0 +1,15 @@
+
+.widget-picture {
+  width: 12.5rem;
+  overflow: hidden;
+
+  .picture-wrapper {
+    position: relative;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+}

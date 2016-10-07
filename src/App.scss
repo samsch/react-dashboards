@@ -1,0 +1,74 @@
+
+$header-height: 10rem;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.app-mount {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  width: 100%;
+  height: $header-height;
+  text-align: center;
+  color: #999;
+
+  h1 {
+    margin: 4rem;
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.body {
+  display: flex;
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+main {
+  position: relative;
+  background-color: white;
+  height: 100%;
+  flex: 6 1 auto;
+  overflow-y: auto;
+}
+
+.sidebar {
+  transition: .5s 0s all ease;
+  background-color: #ccc;
+  min-width: 13.25rem;
+  max-width: 18.75rem;
+  height: 100%;
+  flex: 1 0 13.25rem;
+
+  &:hover {
+    background-color: white;
+  }
+}
