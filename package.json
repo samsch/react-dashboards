@@ -1,7 +1,18 @@
 {
   "name": "dashboards",
   "version": "0.1.0",
-  "private": true,
+  "description": "react-dashboards",
+  "main": "lib/ReactDashboards.js",
+  "author": "Samuel Scheiderich",
+  "license": "0BSD",
+  "homepage": "https://github.com/samsch/react-dashboards",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samsch/react-dashboards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samsch/react-dashboards/issues"
+  },
   "devDependencies": {
     "autoprefixer": "6.4.1",
     "babel-core": "6.14.0",
@@ -85,5 +96,10 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "dashboard"
+  ]
 }
