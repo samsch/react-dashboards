@@ -2,7 +2,7 @@
   "name": "dashboards",
   "version": "0.1.0",
   "description": "react-dashboards",
-  "main": "lib/ReactDashboards.js",
+  "main": "lib/Dashboard.js",
   "author": "Samuel Scheiderich",
   "license": "0BSD",
   "homepage": "https://github.com/samsch/react-dashboards",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "autoprefixer": "6.4.1",
+    "babel-cli": "^6.16.0",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-jest": "15.0.0",
@@ -49,7 +50,9 @@
     "path-exists": "2.1.0",
     "postcss-loader": "0.13.0",
     "promise": "7.1.1",
+    "react": "^15.3.2",
     "react-dev-utils": "^0.2.1",
+    "react-dom": "^15.3.2",
     "recursive-readdir": "2.1.0",
     "rimraf": "2.5.4",
     "sass-loader": "^4.0.2",
@@ -60,14 +63,15 @@
     "webpack-dev-server": "1.16.1",
     "whatwg-fetch": "1.0.0"
   },
-  "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+  "peerDependencies": {
+    "react": ">= 15.3.0 < 16"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "build-npm": "babel ./src/Dashboard --out-dir ./lib --source-maps",
+    "prepublish": "npm run build-npm"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -94,7 +98,11 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "latest",
+      "react"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "keywords": [

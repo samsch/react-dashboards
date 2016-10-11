@@ -26,7 +26,7 @@ const Layout = props => {
 };
 
 class Dashboard extends React.PureComponent {
-  static defaultProps = {
+  static defaultProps: {
     widgets: {},
   }
   render () {
@@ -42,6 +42,9 @@ class Dashboard extends React.PureComponent {
 Dashboard.propTypes = {
   widgets: React.PropTypes.object,
   layout: React.PropTypes.array.isRequired,
-}
+};
+Dashboard.defaultProps = {
+  widgets: {},
+};
 
 export default Dashboard;

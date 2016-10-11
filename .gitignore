@@ -1,4 +1,8 @@
 
+lib
+
+#### Generated .gitignore stuff
+
 # misc
 .DS_Store
 .env
