@@ -1,13 +1,13 @@
 
 # Alpha warning!
 
-This project is only just being started. It is not yet properly configured to be used as an npm module, nor is it available via npm.
+This project is only just being started. It is not yet ~~properly configured to be used as an npm module, nor is it~~ available via npm.
 
 Pull requests, ideas, suggestions, and help are all welcome!
 
 A short list of things which are out of place, missing, or extra, that need fixed before an initial publish to npm:
 - PictureWidget is just for test/demo purposes. It will be moved into a demo directory eventually.
-- There is no release build configuration setup. Right now an ejected create-react-app project just builds the demo from /src/index.js.
+- ~~There is no release build configuration setup. Right now an ejected create-react-app project just builds the demo from /src/index.js.~~ [Build instructions!](#contributing-and-development)
 - SIGNIFICANT FUNCTIONALITY
 - Documentation for the SIGNIFICANT FUNCTIONALITY
 
@@ -32,6 +32,12 @@ const MyComponent = props => (
   </div>
 );
 ```
+
+# Contributing and development
+
+To build for npm, use `npm run build-npm`. That will run babel against the js/jsx files in `srv/Dashboard/`, with the compiled output landing in `lib/`.
+
+To start the development server, run `npm start`. This server is based off of and mostly comprised of the scripts ejected from create-react-app. The entry point is `src/index.js`. It is configured to support sass files as well as css files.
 
 ## Ideas for layout + widget configuration
 
