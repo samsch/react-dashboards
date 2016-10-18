@@ -39,6 +39,48 @@ To build for npm, use `npm run build-npm`. That will run babel against the js/js
 
 To start the development server, run `npm start`. This server is based off of and mostly comprised of the scripts ejected from create-react-app. The entry point is `src/index.js`. It is configured to support sass files as well as css files.
 
+## Currently implemented layout system
+
+You can pass a `widgets` prop with properties [topLeft, topCenter, topRight, bottomLeft, bottomRight], and values that are components. The components will be rendered into the five locations.
+
+You can also pass a `layout` prop, which requires a `mode` property. Currently, `absolute` and `flex` are defined, with flex being similar to the previous iteration (and using widget property names which represent the widgets rather than point to a location). I think going forward, these layout systems will be pulled into "plugins" to keep the library modular. The flex model may be dropped for now, as the absolute model gives the structured layout I'm interested in. The only problem with the absolute model currently is dealing with large variations in screen size.
+
+The Dashboard has a default absolute layout setup for when you don't pass one in (giving you the usable property names listed above).
+
+The absolute layout looks like this:
+```js
+layout: {
+  mode: 'absolute',
+  segments: [
+    {
+      id: 'topLeft',
+      top: 0,
+      left: 0,
+      height: 50,
+      width: 33.33,
+    },
+    {
+      id: 'bottomRight',
+      top: 50,
+      left: 62,
+      height: 50,
+      width: 38,
+    },
+  ],
+},
+```
+You would usually have more locations, but this gives the idea. The current model will take the numbers and use those as percentages with .5rem added (using css `calc()`) for top/left and 1rem subtracted for width/height. I think it might be good to have a config property which removes the `calc()` part of this for older browser support, if it doesn't add too much complexity. However, the only major browsers which calc doesn't work on anymore are IE<9 and Android <4.4 (unless UC browser is considered major, which doesn't have any support for calc).
+
+Widgets will look something like:
+```js
+{
+  topRight: TextWidget,
+  bottomRight: props => <div>Super basic widget</div>,
+}
+```
+
+The idea later on will be to allow passing in an array of components, and arranging them against the locations with drag and drop.
+
 ## Ideas for layout + widget configuration
 
 There are a couple competing layout strategies I have in mind. In all case "widgets" are really just React components.

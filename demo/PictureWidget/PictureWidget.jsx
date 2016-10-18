@@ -14,9 +14,12 @@ class PictureWidget extends React.PureComponent {
   }
 }
 PictureWidget.propTypes = {
-  title: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string,
   pictureUrl: React.PropTypes.string,
   alt: React.PropTypes.string,
 }
+PictureWidget.defaultProps = {
+  title: 'Default title',
+};
 
 export default PictureWidget;

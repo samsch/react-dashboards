@@ -42,7 +42,7 @@ const createWidth = function (percentage) {
 const absoluteLayout = (segments, widgets) => segments.map(segment => {
   const Widget = widgets[segment.id] || BlankWidget;
   return (
-    <div className="absolute-segment" style={{
+    <div key={segment.id} className="absolute-segment" style={{
         top: createOffset(segment.top),
         left: createOffset(segment.left),
         height: createWidth(segment.height),
@@ -54,14 +54,23 @@ const absoluteLayout = (segments, widgets) => segments.map(segment => {
   );
 });
 
+const layout = (layout, widgets) => {
+  switch(layout.mode) {
+    case 'absolute':
+      return absoluteLayout(layout.segments, widgets);
+    case 'flex':
+      return layout.children.map(layout=>(<Layout key={layout.id} {...layout} widgets={widgets} />));
+    default:
+      return 'Layout mode invalid';
+  }
+};
+
 class Dashboard extends React.PureComponent {
   static defaultProps: {
     widgets: {},
   }
   render () {
-    const view = this.props.layout.mode === 'flex' ?
-      this.props.layout.map(layout=>(<Layout key={layout.id} {...layout} widgets={this.props.widgets} />))
-        : absoluteLayout(this.props.layout.segments, this.props.widgets);
+    const view = layout(this.props.layout, this.props.widgets);
     return (
       <div className={'component-dashboard ' + this.props.layout.mode}>
         {view}
